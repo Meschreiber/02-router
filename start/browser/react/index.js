@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import AppContainer from './containers/AppContainer';
 import Albums from './components/Albums.js';
 import Album from './components/Album.js';
-import { Router, Route, hashHistory, IndexRedirect} from 'react-router';
+import {  Router
+        , Route
+        , hashHistory
+        , IndexRedirect } from 'react-router';
 
 ReactDOM.render(
   <Router history={hashHistory}>
