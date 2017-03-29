@@ -6,15 +6,18 @@ import Albums from './components/Albums.js';
 import Album from './components/Album.js';
 import Artist from './components/Artist.js';
 import Songs from './components/Songs.js';
+import My404 from './components/My404.js';
+
 import {
   Router
   , Route
   , hashHistory
   , IndexRedirect
+  , browserHistory
 } from 'react-router';
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={AppContainer}>
       <IndexRedirect to="/albums" />
       <Route path="/albums" component={Albums} />
@@ -25,6 +28,7 @@ ReactDOM.render(
         <Route path="songs" component={Songs} />
       </Route>
     </Route>
+    <Route path='*' component={My404} />
   </Router>,
   document.getElementById('app')
 );
