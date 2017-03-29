@@ -6,8 +6,10 @@ const Songs = (props) => {
   const currentSong = props.currentSong;
   const isPlaying = props.isPlaying;
   const toggle = props.toggleOne;
+  console.log('from Songs.js', songs)
 
   return (
+    
     <table className='table'>
       <thead>
         <tr>

@@ -26,6 +26,8 @@ export default class AppContainer extends Component {
     this.selectAlbum = this.selectAlbum.bind(this);
     this.deselectAlbum = this.deselectAlbum.bind(this);
     this.selectArtist = this.selectArtist.bind(this);
+    this.findAlbums = this.findAlbums.bind(this);
+    this.findSongs = this.findSongs.bind(this);
   }
 
   componentDidMount() {
@@ -121,19 +123,39 @@ export default class AppContainer extends Component {
     // this URL will display all albums/songs from a particular artists
     axios.get(`/api/artists/${artistId}`)
       .then(res => res.data)
-      .then(artist => { 
+      .then(artist => {
         this.setState({
           selectedArtist: artist
         });
-        console.log('appcontainer.js artist', artist, 'state', this.state);
       });
   }
+
+  findAlbums(artistId){
+    // getting information to display relevant albums for a particular artist
+    axios.get(`/api/artists/${artistId}/albums`)
+      .then(res => res.data)
+      .then(album => this.onLoad(convertAlbums(album)))
+  }
+
+    findSongs(artistId){
+    // getting information to display relevant albums for a particular artist
+    axios.get(`/api/artists/${artistId}/songs`)
+      .then(res => res.data)
+      .then(songs=> {
+        this.setState({
+        currentSongList: songs
+      })
+    })
+  }
+  
+
 
   deselectAlbum() {
     this.setState({ selectedAlbum: {} });
   }
 
   render() {
+    // console.log('this.props.children', this.props.children);
     return (
       <div id="main" className="container-fluid">
         <div className="col-xs-2">
@@ -156,9 +178,12 @@ export default class AppContainer extends Component {
 
                 // Artists component's props
                 artists: this.state.artists,
-
                 selectArtist: this.selectArtist, // this is a method; analogous to selectAlbum
-                selectedArtist: this.state.selectedArtist
+                selectedArtist: this.state.selectedArtist,
+                findAlbums: this.findAlbums,
+                findSongs: this.findSongs,
+                currentSongList: this.state.currentSongList
+
               })
               : null
           }
