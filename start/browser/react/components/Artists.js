@@ -7,7 +7,6 @@ export default class Artists extends React.Component {
     }
 
     render() {
-        console.log("Artists", this.props.artists)
         return (
             <div>
                 <h3>Artists</h3>
