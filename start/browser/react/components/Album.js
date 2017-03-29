@@ -15,7 +15,8 @@ export default class Album extends React.Component {
   }
 
   render() {
-    let props = this.props;
+    const props = this.props;
+    // const {props} = this;  // Equivalent to the top
     const album = props.album;
     const currentSong = props.currentSong;
     const isPlaying = props.isPlaying;
