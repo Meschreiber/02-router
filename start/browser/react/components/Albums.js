@@ -34,5 +34,4 @@ constructor(props) {
   }  
 }
 
-
 // <a className="thumbnail" href="#" onClick={() => selectAlbum(album.id)}>

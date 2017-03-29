@@ -17,6 +17,47 @@ export default class Artist extends React.Component {
     }
 
     render() {
+
+        const selectedArtist = this.props.selectedArtist;
+        const children = this.props.children;
+        const propsToPassToChildren = {
+            currentSong: this.props.currentSong,
+            isPlaying: this.props.isPlaying,
+            toggle: this.props.toggleOne,
+            albums: this.props.albums
+        }
+
+        return (
+            <div>
+                <h3>{selectedArtist.name}</h3>
+                <ul className="nav nav-tabs">
+                    <li><Link to={`/artists/${selectedArtist.id}/albums`}>ALBUMS</Link></li>
+                    <li><Link to={`/artists/${selectedArtist.id}/songs`}>SONGS</Link></li>
+                </ul>
+                { children && React.cloneElement(children, propsToPassToChildren) }
+            </div>
+        )
+    }
+
+}
+
+
+
+/*
+
+export default class Artist extends React.Component {
+
+    componentDidMount() {
+        const artistId = this.props.routeParams.artistId;
+        const selectArtist = this.props.selectArtist;
+        const findAlbums = this.props.findAlbums; // this is a method 
+        const findSongs = this.props.findSongs;
+        selectArtist(artistId);
+        findAlbums(artistId);
+        findSongs(artistId);
+    }
+
+    render() {
         console.log("current songs", this.props.currentSongList)
         const artist = this.props.selectedArtist
         const currentSong = this.props.currentSong;
@@ -37,5 +78,4 @@ export default class Artist extends React.Component {
 
 }
 
-
-
+*/
