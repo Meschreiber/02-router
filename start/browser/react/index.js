@@ -6,10 +6,12 @@ import Albums from './components/Albums.js';
 import Album from './components/Album.js';
 import Artist from './components/Artist.js';
 import Songs from './components/Songs.js';
-import {  Router
-        , Route
-        , hashHistory
-        , IndexRedirect } from 'react-router';
+import {
+  Router
+  , Route
+  , hashHistory
+  , IndexRedirect
+} from 'react-router';
 
 ReactDOM.render(
   <Router history={hashHistory}>
@@ -19,9 +21,9 @@ ReactDOM.render(
       <Route path="albums/:albumId" component={Album} />
       <Route path="/artists" component={Artists} />
       <Route path="artists/:artistId" component={Artist}>
-         <Route path="albums" component={Albums} />
+        <Route path="albums" component={Albums} />
+        <Route path="songs" component={Songs} />
       </Route>
-      <Route path="artists/:artistId/songs" component={Songs} />
     </Route>
   </Router>,
   document.getElementById('app')

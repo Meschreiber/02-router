@@ -24,7 +24,8 @@ export default class Artist extends React.Component {
             currentSong: this.props.currentSong,
             isPlaying: this.props.isPlaying,
             toggle: this.props.toggleOne,
-            albums: this.props.albums
+            albums: this.props.albums,
+            songs: this.props.currentSongList
         }
 
         return (
